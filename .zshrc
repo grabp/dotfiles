@@ -31,6 +31,9 @@ HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 
+# Silence pyenv error
+ZSH_PYENV_QUIET=true
+
 # Erase duplicates
 HISTDUP=erase
 
@@ -105,11 +108,9 @@ init-pyenv() {
   export PYENV_ROOT="$HOME/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
-
-  eval "$(pyenv virtualenv-init -)"
 }
 
-#init-pyenv()
+init-pyenv()
 
 # ==========================================================================================================================================
 # snippets
@@ -124,7 +125,7 @@ zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::extract
 zinit snippet OMZP::brew
-# zinit snippet OMZP::pyenv
+zinit snippet OMZP::pyenv
 # zinit snippet OMZP::python
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::dotenv

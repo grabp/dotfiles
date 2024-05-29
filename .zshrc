@@ -1,43 +1,131 @@
+# ==========================================================================================================================================
+# zinit installer
+# ==========================================================================================================================================
 
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# ==========================================================================================================================================
+# paths 
+# ==========================================================================================================================================
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(/usr/local/bin/brew shellenv)"
 
-export ZSH="$HOME/.oh-my-zsh"
+# ==========================================================================================================================================
+# zshconfig
+# ==========================================================================================================================================
 
-#ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_THEME="robbyrussell"
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
 
-COMPLETION_WAITING_DOTS="true"
+# Erase duplicates
+HISTDUP=erase
 
-plugins=(
-        evalcache
-	python
-	npm
-	node
-	git
-	git-prompt
-	docker
-	docker-compose
-	extract
-)
+# Add commands to history
+setopt appendhistory
 
-source $ZSH/oh-my-zsh.sh
+# Share between sessions
+setopt sharehistory
 
-# User configuration
+# Don't add to history if command has a space as first char
+setopt hist_ignore_space
 
+# Ignore duplicates
+setopt hist_ignore_all_dups
 
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
+# Don't save duplicates
+setopt hist_save_no_dups
+
+setopt hist_ignore_dups
+
+# Don't show duplicates in history search
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':complation:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# ==========================================================================================================================================
+# keybindings
+# ==========================================================================================================================================
+
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+# ==========================================================================================================================================
+# aliases
+# ==========================================================================================================================================
+
+alias ls='ls --color'
+
+# ==========================================================================================================================================
+# plugins
+# ==========================================================================================================================================
+
+zinit light zsh-users/zsh-syntax-highlighting
+
+zinit light zsh-users/zsh-completions
+
+zinit light zsh-users/zsh-autosuggestions
+
+zinit light Aloxaf/fzf-tab
+
+# ==========================================================================================================================================
+# inits
+# ==========================================================================================================================================
 
 init-nvm() {
   export NVM_DIR=~/.nvm
   source $(brew --prefix nvm)/nvm.sh
 }
 
-export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+init-pyenv() {
+  export PYENV_ROOT="$HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+
+  eval "$(pyenv virtualenv-init -)"
+}
+
+#init-pyenv()
+
+# ==========================================================================================================================================
+# snippets
+# ==========================================================================================================================================
+
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::aws
+zinit snippet OMZP::npm
+zinit snippet OMZP::node
+# zinit snippet OMZP::docker
+zinit snippet OMZP::docker-compose
+zinit snippet OMZP::extract
+zinit snippet OMZP::brew
+# zinit snippet OMZP::pyenv
+# zinit snippet OMZP::python
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::dotenv
+
+
+# ==========================================================================================================================================
+# Utils
+# ==========================================================================================================================================
 
 timezsh() {
   shell=${1-$SHELL}
@@ -45,26 +133,13 @@ timezsh() {
 }
 
 
-export PATH="$HOME/.local/bin:$PATH"
+# ==========================================================================================================================================
+# End inits 
+# ==========================================================================================================================================
 
+# Load completions
+autoload -U compinit && compinit
+# Replay all cached completions
+zinit cdreplay -q
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-init-brew() {
-	eval "$(/usr/local/bin/brew shellenv)"
-}
-
-init-pyenv() {
-	export PYENV_ROOT="$HOME/.pyenv"
-	[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-	eval "$(pyenv init -)"
-
-	eval "$(pyenv virtualenv-init -)"
-}
-
-#init-pyenv
-
-#eval "$(starship init zsh)"
-
+eval "$(starship init zsh)"

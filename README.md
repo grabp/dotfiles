@@ -5,6 +5,7 @@ Collection of dotfiles done with `stow` for `zsh`, `zoxide`, `alacritty`, `stars
 ## Requirements
 
 ### MacOS
+
 1. Download and install [FiraCode Nerd Font](https://www.nerdfonts.com/font-downloads)
 2. Install [Alacritty](https://github.com/alacritty/alacritty/releases)
 3. Install brew
@@ -14,12 +15,26 @@ Collection of dotfiles done with `stow` for `zsh`, `zoxide`, `alacritty`, `stars
 4. Install rest of the requirements
 
 ```shell
-brew install stow fzf zsh nvim tmux starship zoxide
+brew install stow fzf zsh nvim tmux starship zoxide pyenv
 ```
 5. Install `packer.nvim`
 ```shell
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+```
+6. Install docker completions
+```shell
+cd ~
+mkdir -p /Users/patrykgrabowski/.cache/zinit/completions
+curl https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > /Users/patrykgrabowski/.cache/zinit/completions/_docker
+```
+7. Install `nvm`
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+```
+8. Install `catppuccin` theme for alacritty
+```shell
+curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 ```
 
 ## Getting started
@@ -34,6 +49,16 @@ git clone git@github.com:grabp/dotfiles.git
 cd ~/dotfiles
 stow .
 ```
+3. Open tmux and install dependencies
+```shell
+tmux
+# Press `prefix` + `I`
+```
+4. Install `nvim` plugins
+```shell
+nvim
+# Press `:PackerInstall`
+```
 
-Done!
+#### Done!
 

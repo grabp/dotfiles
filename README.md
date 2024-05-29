@@ -1,6 +1,6 @@
 # Dotfiles
 
-Collection of dotfiles done with `stow` for `zsh`, `alacritty`, `starship`, `nvim` and `tmux`
+Collection of dotfiles done with `stow` for `zsh`, `zoxide`, `alacritty`, `starship`, `nvim` and `tmux`
 
 ## Requirements
 
@@ -14,7 +14,12 @@ Collection of dotfiles done with `stow` for `zsh`, `alacritty`, `starship`, `nvi
 4. Install rest of the requirements
 
 ```shell
-brew install stow fzf zsh nvim tmux starship
+brew install stow fzf zsh nvim tmux starship zoxide
+```
+5. Install `packer.nvim`
+```shell
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 ## Getting started

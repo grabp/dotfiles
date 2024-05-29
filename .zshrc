@@ -33,6 +33,9 @@ SAVEHIST=$HISTSIZE
 
 # Silence pyenv error
 ZSH_PYENV_QUIET=true
+ZSH_PYENV_VIRTUALENV=false
+
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Erase duplicates
 HISTDUP=erase
@@ -62,6 +65,13 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':complation:*' menu no
 
+# Docker stacking
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+# Load nvm lazy
+# zstyle ':omz:plugins:nvm' lazy yes
+
 # fzf https://github.com/Aloxaf/fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':completion:*:descriptions' format '[%d]'
@@ -82,6 +92,9 @@ bindkey '^[[B' history-search-forward
 # ==========================================================================================================================================
 
 alias ls='ls --color'
+alias cd='z'
+alias vim='nvim'
+alias v='nvim'
 
 # ==========================================================================================================================================
 # plugins
@@ -99,18 +112,11 @@ zinit light Aloxaf/fzf-tab
 # inits
 # ==========================================================================================================================================
 
-init-nvm() {
-  export NVM_DIR=~/.nvm
-  source $(brew --prefix nvm)/nvm.sh
-}
-
 init-pyenv() {
   export PYENV_ROOT="$HOME/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 }
-
-init-pyenv()
 
 # ==========================================================================================================================================
 # snippets
@@ -120,13 +126,12 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::aws
 zinit snippet OMZP::npm
-zinit snippet OMZP::node
+zinit snippet OMZP::nvm
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::extract
 zinit snippet OMZP::brew
 zinit snippet OMZP::pyenv
-# zinit snippet OMZP::python
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::dotenv
 
@@ -147,7 +152,12 @@ timezsh() {
 
 # Load completions
 autoload -U compinit && compinit
+
 # Replay all cached completions
 zinit cdreplay -q
+
+# Install zoxide
+eval "$(zoxide init zsh)"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(starship init zsh)"

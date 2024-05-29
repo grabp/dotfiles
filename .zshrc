@@ -58,7 +58,14 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':complation:*' menu no
+
+# fzf https://github.com/Aloxaf/fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:*' switch-group '<' '>'
+
+# | ftb-tmux-popup
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # ==========================================================================================================================================
 # keybindings
@@ -113,7 +120,7 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::aws
 zinit snippet OMZP::npm
 zinit snippet OMZP::node
-# zinit snippet OMZP::docker
+zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::extract
 zinit snippet OMZP::brew

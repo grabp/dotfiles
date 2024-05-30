@@ -8,6 +8,7 @@ lualine.setup({
 			{ "encoding" },
 			{ "fileformat" },
 			{ "filetype" },
+			{ "swenv", icon = "🐍" },
 		},
 	},
 })

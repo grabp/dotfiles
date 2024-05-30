@@ -2,16 +2,17 @@ local auto_session = require("auto-session")
 local wk = require("which-key")
 
 auto_session.setup({
-	log_level = "error",
+	log_level = "info",
 	auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
 })
 
+print(vim.fn.stdpath("data") .. "/sessions/")
 wk.register({
 	s = {
 		name = "Session",
 		s = { auto_session.AutoSaveSession, "Save session" },
 		S = { auto_session.search_session, "Search session" },
-		l = { auto_session.ListSessions, "List sessions" },
+		l = { auto_session.list_sessions, "List sessions" },
 		d = { auto_session.DeleteSession, "Delete session" },
 		r = { auto_session.RestoreSession, "Restore session" },
 	},

@@ -2,6 +2,8 @@ local catppuccin = require("catppuccin")
 
 catppuccin.setup({
 	flavour = "mocha",
+	term_colors = true,
+	transparent_background = true,
 	integrations = {
 		cmp = true,
 		gitsigns = true,
@@ -14,7 +16,6 @@ catppuccin.setup({
 			enabled = true,
 			indentscope_color = "",
 		},
-		bufferline = true,
 		indent_blankline = {
 			enabled = true,
 			scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
@@ -23,4 +24,4 @@ catppuccin.setup({
 	},
 })
 
-vim.cmd("colorscheme catppuccin")
+vim.cmd.colorscheme("catppuccin")

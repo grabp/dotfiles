@@ -20,6 +20,12 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"akinsho/nvim-bufferline.lua",
+		after = "catppuccin",
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
+
+	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
@@ -118,11 +124,6 @@ return require("packer").startup(function(use)
 	})
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
 
-	use({
-		"akinsho/nvim-bufferline.lua",
-		requires = { "nvim-tree/nvim-web-devicons" },
-	})
-
 	use("stevearc/dressing.nvim")
 
 	use("lukas-reineke/indent-blankline.nvim")
@@ -147,7 +148,6 @@ return require("packer").startup(function(use)
 		requires = "JoosepAlviste/nvim-ts-context-commentstring",
 	})
 
-	-- TODO: Fix this
 	use({
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -162,4 +162,7 @@ return require("packer").startup(function(use)
 
 	use("WhoIsSethDaniel/mason-tool-installer")
 	use("mfussenegger/nvim-lint")
+	use("AckslD/swenv.nvim")
+	use("marene/nvm.vim")
+	use("smolck/command-completion.nvim")
 end)

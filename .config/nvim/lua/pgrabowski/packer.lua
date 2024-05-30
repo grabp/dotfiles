@@ -60,20 +60,13 @@ return require("packer").startup(function(use)
 	use("alexghergh/nvim-tmux-navigation")
 
 	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
-
-	use({
-		"nvim-tree/nvim-tree.lua",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
 		requires = {
-			"nvim-tree/nvim-web-devicons", -- optional
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 		},
 	})
 
@@ -97,16 +90,6 @@ return require("packer").startup(function(use)
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
-			})
-		end,
-	})
-
-	use({
-		"rmagatti/auto-session",
-		config = function()
-			require("auto-session").setup({
-				log_level = "error",
-				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
 			})
 		end,
 	})
@@ -165,4 +148,13 @@ return require("packer").startup(function(use)
 	use("AckslD/swenv.nvim")
 	use("marene/nvm.vim")
 	use("smolck/command-completion.nvim")
+
+	use({
+		"coffebar/neovim-project",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+			{ "Shatur/neovim-session-manager" },
+		},
+	})
 end)

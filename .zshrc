@@ -35,7 +35,7 @@ SAVEHIST=$HISTSIZE
 ZSH_PYENV_QUIET=true
 ZSH_PYENV_VIRTUALENV=false
 
-export FZF_DEFAULT_OPTS='--preview "bat --color=always --style=numbers --line-range=:500 {}" --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
+export FZF_DEFAULT_OPTS="--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
@@ -80,6 +80,7 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:*' popup-min-size 80 12
 
 # | ftb-tmux-popup
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
@@ -103,6 +104,8 @@ alias less="bat --pager='less -R'"
 alias cd='z'
 alias vim='nvim'
 alias v='nvim'
+alias ..='z ..'
+alias ...='z ...'
 
 # ==========================================================================================================================================
 # functions

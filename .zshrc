@@ -97,7 +97,7 @@ bindkey '^[[B' history-search-forward
 
 alias ls='exa --icons'
 alias ll='exa -lah --icons'
-alias tree='exa -lah --tree --icons --level=3 --ignore-glob="node_modules|.git|.DS_Store"'
+alias tree='exa -lah --tree --icons --level=3 --ignore-glob="node_modules|.git|.DS_Store|.nvm|.turbo"'
 alias cat='bat'
 alias less="bat --pager='less -R'"
 alias cd='z'

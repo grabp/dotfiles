@@ -19,17 +19,17 @@ telescope.setup({
 			"--smart-case",
 			"--hidden",
 			"--glob",
-			"!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock}",
+			"!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,**/dist/*,**/build/*,**/target/*,**/vendor/*,**/node_modules/*,**/tmp/*,**/cache/*,**/logs/*,**/log/*,**/.nvm/*,**/.turbo/*}",
 		},
 	},
 	pickers = {
 		find_files = {
 			hidden = true,
-			file_ignore_patterns = { ".git/*", "node_modules/*" },
+			file_ignore_patterns = { ".git/*", "node_modules/*", ".DS_Store/*", ".nvm/*", ".turbo/*" },
 		},
 		live_grep = {
 			hidden = true,
-			file_ignore_patterns = { ".git/*", "node_modules/*" },
+			file_ignore_patterns = { ".git/*", "node_modules/*", ".DS_Store/*", ".nvm/*", ".turbo/*" },
 		},
 	},
 })

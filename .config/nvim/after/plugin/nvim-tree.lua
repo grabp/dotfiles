@@ -2,22 +2,42 @@ local neotree = require("neo-tree")
 local highlights = require("neo-tree.ui.highlights")
 
 neotree.setup({
+	sources = {
+		"filesystem",
+		"buffers",
+		"git_status",
+		"document_symbols",
+	},
 	enable_git_status = true,
 	window = {
 		position = "right",
+		width = 50,
 	},
 	source_selector = {
 		winbar = true,
 		statusline = true,
+		sources = {
+			{ source = "filesystem" },
+			{ source = "buffers" },
+			{ source = "git_status" },
+			{ source = "document_symbols" },
+		},
+		content_layout = "center",
+		tabs_layout = "active",
+	},
+	document_symbols = {
+		follow_cursor = true,
 	},
 	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
+			hide_hidden = false,
 		},
 		hide_by_name = {
 			"node_modules",
 		},
 		follow_current_file = {
+			width = 30,
 			enabled = true,
 		},
 		group_empty_dirs = true,
@@ -60,7 +80,6 @@ neotree.setup({
 					end
 
 					if value == path then
-						vim.print(path)
 						return {
 							text = string.format(" ⥤ %d", i), -- <-- Add your favorite harpoon like arrow here
 							highlight = config.highlight or "NeoTreeDirectoryIcon",

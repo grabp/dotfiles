@@ -26,6 +26,13 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"hydra_lsp",
 		"taplo",
+		"jsonls",
+		"htmx",
+		"graphql",
+		"bashls",
+		"spectral",
+		"prismals",
+		"terraformls",
 	},
 	handlers = {
 		function(server_name)

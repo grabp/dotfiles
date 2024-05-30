@@ -22,6 +22,12 @@ telescope.setup({
 			"!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,**/dist/*,**/build/*,**/target/*,**/vendor/*,**/node_modules/*,**/tmp/*,**/cache/*,**/logs/*,**/log/*,**/.nvm/*,**/.turbo/*}",
 		},
 	},
+	extensions = {
+		media_files = {
+			filetypes = { "png", "webp", "jpg", "jpeg", "mp4", "webm", "pdf", "svg" },
+			find_cmd = "rg",
+		},
+	},
 	pickers = {
 		find_files = {
 			hidden = true,
@@ -36,6 +42,7 @@ telescope.setup({
 
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
+telescope.load_extension("media_files")
 
 wk.register({
 	["<C-p>"] = { builtin.git_files, "Git files" },

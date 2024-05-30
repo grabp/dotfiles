@@ -17,7 +17,7 @@ Collection of dotfiles done with `stow` for `zsh`, `zoxide`, `alacritty`, `stars
 4. Install rest of the requirements
 
 ```shell
-brew install stow fzf zsh nvim tmux starship zoxide pyenv ripgrep bat
+brew install stow fzf zsh ffmpegthumbnailer poppler nvim chafai imagemagick tmux starship zoxide pyenv ripgrep bat
 ```
 
 5. Install `packer.nvim`

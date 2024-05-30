@@ -157,4 +157,19 @@ return require("packer").startup(function(use)
 			{ "Shatur/neovim-session-manager" },
 		},
 	})
+	use({
+		"roobert/tailwindcss-colorizer-cmp.nvim",
+		-- optionally, override the default options:
+		config = function()
+			require("tailwindcss-colorizer-cmp").setup({
+				color_square_width = 2,
+			})
+		end,
+	})
+
+	use("nvim-telescope/telescope-media-files.nvim", {
+		requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "nvim-lua/popup.nvim" },
+	})
+
+	use("adelarsq/image_preview.nvim")
 end)

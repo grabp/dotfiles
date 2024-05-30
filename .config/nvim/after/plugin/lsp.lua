@@ -1,4 +1,5 @@
 local lsp_zero = require("lsp-zero")
+local lspconfig = require("lspconfig")
 
 lsp_zero.preset("recommended")
 
@@ -7,6 +8,28 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- to learn the available actions
 	lsp_zero.default_keymaps({ buffer = bufnr, remap = false })
 end)
+
+function eslint_custom()
+	lspconfig.eslint.setup({
+		root_dir = require("lspconfig.util").find_git_ancestor,
+		settings = {
+			workingDirectory = {
+				mode = "location",
+			},
+			experimental = {
+				useFlatConfig = true,
+			},
+		},
+	})
+end
+
+function handler(server_name)
+	if server_name == "eslint" then
+		eslint_custom()
+	else
+		lspconfig[server_name].setup({})
+	end
+end
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -34,16 +57,11 @@ require("mason-lspconfig").setup({
 		"prismals",
 		"terraformls",
 	},
-	handlers = {
-		function(server_name)
-			require("lspconfig")[server_name].setup({})
-		end,
-	},
+	handlers = { handler },
 })
 require("mason-tool-installer").setup({
 	ensure_installed = {
-		"prettier",
-		"eslint",
+		"prettierd",
 		"isort",
 		"black",
 		"pylint",
@@ -55,10 +73,12 @@ require("mason-tool-installer").setup({
 		"hadolint",
 		"htmlhint",
 		"autoflake",
+		"eslint_d",
 	},
 })
 
 lsp_zero.setup()
+-- lsp_configurations.eslint.default_config.root_dir = require("lspconfig.util").root_pattern("tsconfig.json")
 
 local wk = require("which-key")
 

@@ -7,7 +7,15 @@ command_timeout=1500
 palette = "catppuccin_mocha"
 
 [character]
-success_symbol = '[➜](bold green)'
+# success_symbol = '[➜](bold green)'
+success_symbol = "[[♥](green) ❯](maroon)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[directory]
+truncation_length = 4
+# Catppuccin 'lavender'
+style = "bold lavender"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

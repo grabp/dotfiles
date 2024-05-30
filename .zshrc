@@ -35,10 +35,14 @@ SAVEHIST=$HISTSIZE
 ZSH_PYENV_QUIET=true
 ZSH_PYENV_VIRTUALENV=false
 
+export FZF_DEFAULT_OPTS='--preview "bat --color=always --style=numbers --line-range=:500 {}" --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
+
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Erase duplicates
 HISTDUP=erase
+
+setopt completealiases
 
 # Add commands to history
 setopt appendhistory
@@ -91,10 +95,22 @@ bindkey '^[[B' history-search-forward
 # aliases
 # ==========================================================================================================================================
 
-alias ls='ls --color'
+alias ls='exa --icons'
+alias ll='exa -lah --icons'
+alias tree='exa -lah --tree --icons --level=3 --ignore-glob="node_modules|.git|.DS_Store"'
+alias cat='bat'
+alias less="bat --pager='less -R'"
 alias cd='z'
 alias vim='nvim'
 alias v='nvim'
+
+# ==========================================================================================================================================
+# functions
+# ==========================================================================================================================================
+
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --pager='less -R' --diff
+}
 
 # ==========================================================================================================================================
 # plugins

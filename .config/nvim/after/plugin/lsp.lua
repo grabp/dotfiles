@@ -24,6 +24,8 @@ require("mason-lspconfig").setup({
 		"tailwindcss",
 		"yamlls",
 		"lua_ls",
+		"hydra_lsp",
+		"taplo",
 	},
 	handlers = {
 		function(server_name)

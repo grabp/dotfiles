@@ -1,19 +1,37 @@
 local tree = require("nvim-tree")
 
-
 tree.setup({
     sort = {
         sorter = "case_sensitive"
     },
     view = {
-        width = 30
+        width = 30,
+        side = "left",
     },
     renderer = {
         group_empty = true
     },
     filters = {
-        dotfiles = false
+        enable = true,
+        custom = { ".DS_Store", ".git" },
+        git_ignored = true,
     },
+    git = {
+        ignore = true
+    },
+    on_attach = on_attach,
+    actions = {
+        open_file = {
+            window_picker = {
+                enable = false
+            }
+        }
+    }
 })
 
-vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+local wk = require("which-key")
+
+wk.register({
+    ["<C-n>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree" }
+})
+

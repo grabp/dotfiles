@@ -18,6 +18,9 @@ function truncate_path(path)
 			table.insert(t, string.sub(str, 1, 1))
 		end
 	end
+	if tablelength(t) == 1 then
+		return ""
+	end
 	table.remove(t, tablelength(t))
 	local result = table.concat(t, "/") .. "/"
 	return result
@@ -26,37 +29,41 @@ end
 bufferline.setup({
 	highlights = require("catppuccin.groups.integrations.bufferline").get(),
 	options = {
-		items = {
-			{
-				name = "Tests",
-				highlight = { underline = true, sp = "blue" },
-				priority = 2,
-				icon = "",
-				matcher = function(buf) -- match ts/js .test.*, .spec.*, _test.*, _spec.*, and python test_
-					return buf.filename:match("test_%")
-						or buf.filename:match("spec_%")
-						or buf.filename:match("test%.")
-						or buf.filename:match("spec%.")
-						or buf.path:match("%specs%.")
-						or buf.path:match("%tests%.")
-				end,
+		groups = {
+			options = {
+				toggle_hidden_on_enter = true,
 			},
-			{
-				name = "Docs",
-				highlight = { underline = true, sp = "green" },
-				auto_close = false,
-				matcher = function(buf)
-					return buf.filename:match("README%")
-						or buf.filename:match("readme%")
-						or buf.path:match("%doc%")
-						or buf.path:match("%docs%")
-				end,
-				separator = {
-					style = require("bufferline.groups").separator.tab,
+			items = {
+				{
+					name = "Tests",
+					highlight = { underline = true, sp = "blue" },
+					priority = 2,
+					icon = "",
+					matcher = function(buf) -- match ts/js .test.*, .spec.*, _test.*, _spec.*, and python test_
+						return buf.name:match("test_.")
+							or buf.name:match("spec_.")
+							or buf.name:match("test.")
+							or buf.name:match("spec.")
+							or buf.path:match(".specs.")
+							or buf.path:match(".tests.")
+					end,
+				},
+				{
+					name = "Docs",
+					highlight = { underline = true, sp = "green" },
+					auto_close = false,
+					matcher = function(buf)
+						return buf.name:match("README.")
+							or buf.name:match("readme.")
+							or buf.path:match(".doc.")
+							or buf.path:match(".docs.")
+					end,
+					separator = {
+						style = require("bufferline.groups").separator.tab,
+					},
 				},
 			},
 		},
-		toggle_hidden_on_enter = true,
 		numbers = "ordinal",
 		diagnostics = "nvim_lsp",
 		name_formatter = function(buf)

@@ -143,11 +143,14 @@ return require("packer").startup(function(use)
 		"stevearc/conform.nvim",
 	})
 
+	use({
+		"marcelofern/vale.nvim",
+	})
+
 	use("WhoIsSethDaniel/mason-tool-installer")
 	use("mfussenegger/nvim-lint")
 	use("AckslD/swenv.nvim")
 	use("marene/nvm.vim")
-	use("smolck/command-completion.nvim")
 
 	use({
 		"coffebar/neovim-project",

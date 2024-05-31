@@ -35,6 +35,7 @@ neotree.setup({
 		},
 		hide_by_name = {
 			"node_modules",
+			".git",
 		},
 		follow_current_file = {
 			width = 30,

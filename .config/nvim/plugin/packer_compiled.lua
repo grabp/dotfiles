@@ -100,11 +100,6 @@ _G.packer_plugins = {
     path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["command-completion.nvim"] = {
-    loaded = true,
-    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/command-completion.nvim",
-    url = "https://github.com/smolck/command-completion.nvim"
-  },
   ["conform.nvim"] = {
     loaded = true,
     path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/conform.nvim",
@@ -124,6 +119,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["image.nvim"] = {
+    loaded = true,
+    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/image.nvim",
+    url = "https://github.com/3rd/image.nvim"
+  },
+  ["image_preview.nvim"] = {
+    loaded = true,
+    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/image_preview.nvim",
+    url = "https://github.com/adelarsq/image_preview.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
@@ -155,19 +160,18 @@ _G.packer_plugins = {
     path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["neovim-project"] = {
-    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
+  ["neo-tree.nvim"] = {
     loaded = true,
-    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/neovim-project",
-    url = "https://github.com/coffebar/neovim-project"
+    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
+    url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
   },
-  ["neovim-session-manager"] = {
+  ["nui.nvim"] = {
     loaded = true,
-    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
-    url = "https://github.com/Shatur/neovim-session-manager"
+    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-autopairs"] = {
-    config = { "\27LJ\2\nÂ\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\14ts_config\15javascript\1\2\0\0\20template_string\blua\1\0\3\blua\0\tjava\1\15javascript\0\1\2\0\0\vstring\1\0\2\rcheck_ts\2\14ts_config\0\nsetup\19nvim-autopairs\frequire\0" },
+    config = { "\27LJ\2\nÂ\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\14ts_config\15javascript\1\2\0\0\20template_string\blua\1\0\3\tjava\1\blua\0\15javascript\0\1\2\0\0\vstring\1\0\2\14ts_config\0\rcheck_ts\2\nsetup\19nvim-autopairs\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -200,11 +204,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/nvim-tmux-navigation",
     url = "https://github.com/alexghergh/nvim-tmux-navigation"
-  },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -246,10 +245,21 @@ _G.packer_plugins = {
     path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/swenv.nvim",
     url = "https://github.com/AckslD/swenv.nvim"
   },
+  ["tailwindcss-colorizer-cmp.nvim"] = {
+    config = { "\27LJ\2\nc\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\23color_square_width\3\2\nsetup\30tailwindcss-colorizer-cmp\frequire\0" },
+    loaded = true,
+    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/tailwindcss-colorizer-cmp.nvim",
+    url = "https://github.com/roobert/tailwindcss-colorizer-cmp.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
+  ["telescope-media-files.nvim"] = {
+    loaded = true,
+    path = "/Users/patrykgrabowski/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
+    url = "https://github.com/nvim-telescope/telescope-media-files.nvim"
   },
   ["telescope-ui-select.nvim"] = {
     loaded = true,
@@ -296,18 +306,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: alpha-nvim
-time([[Config for alpha-nvim]], true)
-try_loadstring("\27LJ\2\na\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\27alpha.themes.dashboard\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
-time([[Config for alpha-nvim]], false)
--- Config for: neovim-project
-time([[Config for neovim-project]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "neovim-project")
-time([[Config for neovim-project]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\2\nt\0\0\3\0\a\0\0156\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0006\0\4\0'\2\5\0B\0\2\0029\0\6\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
 time([[Config for which-key.nvim]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+try_loadstring("\27LJ\2\na\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\27alpha.themes.dashboard\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
+time([[Config for alpha-nvim]], false)
+-- Config for: tailwindcss-colorizer-cmp.nvim
+time([[Config for tailwindcss-colorizer-cmp.nvim]], true)
+try_loadstring("\27LJ\2\nc\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\23color_square_width\3\2\nsetup\30tailwindcss-colorizer-cmp\frequire\0", "config", "tailwindcss-colorizer-cmp.nvim")
+time([[Config for tailwindcss-colorizer-cmp.nvim]], false)
 -- Config for: todo-comments.nvim
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")

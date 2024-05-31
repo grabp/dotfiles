@@ -10,7 +10,7 @@ neovim_project.setup({
 	},
 })
 wk.register({
-	p = {
+	k = {
 		name = "Project",
 		d = { "<cmd>:Telescope neovim-project discover<CR>", "Discover" },
 		r = { "<cmd>:Telescope neovim-project recent<CR>", "Recent" },

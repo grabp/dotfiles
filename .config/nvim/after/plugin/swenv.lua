@@ -11,7 +11,7 @@ swenv.setup({
 })
 
 wk.register({
-	["py"] = {
+	["<leader>py"] = {
 		name = "Python",
 		e = {
 			function()
@@ -20,4 +20,4 @@ wk.register({
 			"Environment",
 		},
 	},
-}, { prefix = "<leader>" })
+})

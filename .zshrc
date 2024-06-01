@@ -22,6 +22,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
 export PATH="$HOME/.local/bin:$PATH"
 eval "$(/usr/local/bin/brew shellenv)"
+# . "$HOME/.cargo/env"
 
 # ==========================================================================================================================================
 # zshconfig
@@ -74,7 +75,7 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # Load nvm lazy
-# zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' lazy yes
 
 # fzf https://github.com/Aloxaf/fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
@@ -128,20 +129,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # ==========================================================================================================================================
-# inits
-# ==========================================================================================================================================
-
-eval "$(pyenv virtualenv-init -)"
-
-# pnpm
-export PNPM_HOME="/Users/patrykgrabowski/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# ==========================================================================================================================================
 # snippets
 # ==========================================================================================================================================
 
@@ -158,6 +145,20 @@ zinit snippet OMZP::pyenv
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::dotenv
 
+# ==========================================================================================================================================
+# inits
+# ==========================================================================================================================================
+
+eval "$(pyenv virtualenv-init -)"
+
+# pnpm
+export PNPM_HOME="/Users/patrykgrabowski/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 
 # ==========================================================================================================================================
 # Utils
@@ -167,7 +168,6 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
-
 
 # ==========================================================================================================================================
 # End inits 
@@ -185,6 +185,6 @@ eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(starship init zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

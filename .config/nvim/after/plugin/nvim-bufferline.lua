@@ -39,13 +39,15 @@ bufferline.setup({
 					highlight = { underline = true, sp = "blue" },
 					priority = 2,
 					icon = "",
-					matcher = function(buf) -- match ts/js .test.*, .spec.*, _test.*, _spec.*, and python test_
-						return buf.name:match("test_.")
-							or buf.name:match("spec_.")
-							or buf.name:match("test.")
-							or buf.name:match("spec.")
-							or buf.path:match(".specs.")
-							or buf.path:match(".tests.")
+					matcher = function(buf)
+						-- python
+						return buf.name:match("test_.*py")
+							or buf.path:match("test/.*")
+							or buf.path:match("tests/.*")
+							or buf.name:match(".*%.spec%.ts")
+							or buf.name:match(".*%.test%.ts")
+							or buf.name:match(".*%.spec%.js")
+							or buf.name:match(".*%.test%.js")
 					end,
 				},
 				{
@@ -53,10 +55,9 @@ bufferline.setup({
 					highlight = { underline = true, sp = "green" },
 					auto_close = false,
 					matcher = function(buf)
-						return buf.name:match("README.")
-							or buf.name:match("readme.")
-							or buf.path:match(".doc.")
-							or buf.path:match(".docs.")
+						return buf.name:match("README%..*")
+							or buf.name:match("readme%.*")
+							or buf.path:match(".*docs/.*")
 					end,
 					separator = {
 						style = require("bufferline.groups").separator.tab,

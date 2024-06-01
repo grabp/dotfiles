@@ -4,14 +4,19 @@ import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 TERM = "xterm-256color"
 
 [font.normal]
-family = "FiraCode Nerd Font"
+# family = "FiraCode Nerd Font Mono"
+family = "Maple Mono NF"
+style = "Light"
 
 [font.bold]
-family = "FiraCode Nerd Font"
-style = "Bold"
+# family = "FiraCode Nerd Font Mono"
+family = "Maple Mono NF"
+style = "SemiBold"
 
 [font.italic]
-family = "FiraCode Nerd Font"
+# family = "FiraCode Nerd Font Mono"
+family = "Maple Mono NF"
+style = "Light Italic"
 
 [[keyboard.bindings]]
 key = "V"

@@ -1,4 +1,9 @@
 # ==========================================================================================================================================
+# env vars 
+# ==========================================================================================================================================
+export EDITOR=nvim
+
+# ==========================================================================================================================================
 # zinit installer
 # ==========================================================================================================================================
 
@@ -22,7 +27,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
 export PATH="$HOME/.local/bin:$PATH"
 eval "$(/usr/local/bin/brew shellenv)"
-# . "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
 
 # ==========================================================================================================================================
 # zshconfig
@@ -31,10 +36,6 @@ eval "$(/usr/local/bin/brew shellenv)"
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
-
-# Silence pyenv error
-ZSH_PYENV_QUIET=true
-ZSH_PYENV_VIRTUALENV=false
 
 export FZF_DEFAULT_OPTS="--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
@@ -97,9 +98,9 @@ bindkey '^[[B' history-search-forward
 # aliases
 # ==========================================================================================================================================
 
-alias ls='exa --icons'
-alias ll='exa -lah --icons'
-alias tree='exa -lah --tree --icons --level=3 --ignore-glob="node_modules|.git|.DS_Store|.nvm|.turbo"'
+alias ls='eza --icons'
+alias ll='eza -lah --icons'
+alias tree='eza -lah --tree --icons --level=3 --ignore-glob="node_modules|.git|.DS_Store|.nvm|.turbo"'
 alias cat='bat'
 alias less="bat --pager='less -R'"
 alias cd='z'
@@ -141,24 +142,8 @@ zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::extract
 zinit snippet OMZP::brew
-zinit snippet OMZP::pyenv
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::dotenv
-
-# ==========================================================================================================================================
-# inits
-# ==========================================================================================================================================
-
-eval "$(pyenv virtualenv-init -)"
-
-# pnpm
-export PNPM_HOME="/Users/patrykgrabowski/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 
 # ==========================================================================================================================================
 # Utils
@@ -185,6 +170,8 @@ eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(starship init zsh)"
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"

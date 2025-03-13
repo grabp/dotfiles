@@ -96,5 +96,7 @@ wk.register({
 		["7"] = { "<cmd>BufferLineGoToBuffer 7<cr>", "Go to buffer 7" },
 		["8"] = { "<cmd>BufferLineGoToBuffer 8<cr>", "Go to buffer 8" },
 		["9"] = { "<cmd>BufferLineGoToBuffer 9<cr>", "Go to buffer 9" },
+		["n"] = { "<cmd>BufferLineCycleNext<cr>", "Next buffer" },
+		["p"] = { "<cmd>BufferLineCyclePrev<cr>", "Previous buffer" },
 	},
 })

@@ -6,8 +6,8 @@ command_timeout = 1500
 
 palette = "catppuccin_mocha"
 
-[python]
-pyenv_version_name = true
+# [python]
+# pyenv_version_name = true
 
 [character]
 # success_symbol = '[➜](bold green)'

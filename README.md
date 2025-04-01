@@ -20,14 +20,7 @@ Collection of dotfiles done with `stow` for `zsh`, `zoxide`, `alacritty`, `stars
 brew install stow fzf zsh ffmpegthumbnailer poppler nvim chafai imagemagick tmux starship zoxide pyenv ripgrep bat
 ```
 
-5. Install `packer.nvim`
-
-```shell
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-
-6. Install docker completions
+5. Install docker completions
 
 ```shell
 cd ~
@@ -36,25 +29,25 @@ curl https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/
     /Users/patrykgrabowski/.cache/zinit/completions/_docker
 ```
 
-7. Install `nvm`
+6. Install `nvm`
 
 ```shell
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 ```
 
-8. Install `catppuccin` theme for alacritty
+7. Install `catppuccin` theme for alacritty
 
 ```shell
 curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 ```
 
-9. Install `exa`
+8. Install `eza`
 
 ```shell
-cargo install exa
+cargo install eza
 ```
 
-10. Install `bat` theme
+9. Install `bat` theme
 
 ```shell
 mkdir -p "$(bat --config-dir)/themes"

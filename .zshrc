@@ -7,6 +7,7 @@ export EDITOR=nvim
 # zinit installer
 # ==========================================================================================================================================
 
+### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -23,11 +24,19 @@ autoload -Uz _zinit
 # paths 
 # ==========================================================================================================================================
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
 export PATH="$HOME/.local/bin:$PATH"
-eval "$(/usr/local/bin/brew shellenv)"
 source "$HOME/.cargo/env"
+
+# ==========================================================================================================================================
+# build flags 
+# ==========================================================================================================================================
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
 # ==========================================================================================================================================
 # zshconfig
@@ -121,29 +130,25 @@ batdiff() {
 # plugins
 # ==========================================================================================================================================
 
-zinit light zsh-users/zsh-syntax-highlighting
-
-zinit light zsh-users/zsh-completions
-
-zinit light zsh-users/zsh-autosuggestions
-
-zinit light Aloxaf/fzf-tab
+zinit ice wait lucid
+zinit for \
+  light-mode \
+  zsh-users/zsh-completions \
+  zdharma-continuum/fast-syntax-highlighting \
+  light-mode \
+  zsh-users/zsh-autosuggestions \
+  light-mode \
+  Aloxaf/fzf-tab
 
 # ==========================================================================================================================================
 # snippets
 # ==========================================================================================================================================
 
 zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::aws
-zinit snippet OMZP::npm
 zinit snippet OMZP::nvm
-zinit snippet OMZP::docker
-zinit snippet OMZP::docker-compose
 zinit snippet OMZP::extract
-zinit snippet OMZP::brew
 zinit snippet OMZP::command-not-found
-zinit snippet OMZP::dotenv
+# zinit snippet OMZP::dotenv
 
 # ==========================================================================================================================================
 # Utils
@@ -167,11 +172,14 @@ zinit cdreplay -q
 # Install zoxide
 eval "$(zoxide init zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
+
 eval "$(starship init zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_AUTO_USE=true
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"

@@ -79,12 +79,15 @@ return {
     -- lazy = false,
     -- ---@type snacks.Config
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
       picker = {
+        hidden = true, -- for hidden files
+        ignored = true, -- for .gitignore files
         enabled = true,
         sources = {
+          files = {
+            hidden = true,
+            ignored = true,
+          },
           explorer = {
             hidden = true,
             ignored = true,
@@ -92,6 +95,7 @@ return {
           },
         },
       },
+
       -- notifier = { enabled = true },
       -- quickfile = { enabled = true },
       -- scope = { enabled = true },

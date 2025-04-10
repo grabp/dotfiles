@@ -25,14 +25,13 @@ local wk = require("which-key")
 -- 	markdown = { "markdownlint" },
 -- }
 
-wk.register({
-	["<leader>"] = {
-		name = "Lint",
-		l = {
-			function()
-				lint.try_lint()
-			end,
-			"Lint",
-		},
+wk.add({
+	{ "<leader>", group = "Lint" },
+	{
+		"<leader>.",
+		function()
+			lint.try_lint()
+		end,
+		desc = "Lint",
 	},
 })

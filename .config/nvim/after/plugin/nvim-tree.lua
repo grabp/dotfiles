@@ -104,6 +104,6 @@ neotree.setup({
 
 local wk = require("which-key")
 
-wk.register({
-	["<C-n>"] = { "<cmd>Neotree<CR>", "Toggle NeoTree" },
+wk.add({
+	{ "<C-n>", "<cmd>Neotree<CR>", desc = "Toggle NeoTree" },
 })

@@ -1,8 +1,6 @@
 local wk = require("which-key")
 
-wk.register({
-	["n"] = {
-		name = "Nvm",
-		l = { "<cmd>NvmList<CR>", "List" },
-	},
-}, { prefix = "<leader>" })
+wk.add({
+	{ "<leader>n", group = "Nvm" },
+	{ "<leader>nl", "<cmd>NvmList<CR>", desc = "List" },
+})

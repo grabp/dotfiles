@@ -44,24 +44,23 @@ telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
 telescope.load_extension("media_files")
 
-wk.register({
-	["<C-p>"] = { builtin.git_files, "Git files" },
+wk.add({
+	{ "<C-p>", builtin.git_files, desc = "Git files" },
 })
 
-wk.register({
-	f = {
-		name = "Find",
-		f = { builtin.find_files, "Find files" },
-		g = { builtin.live_grep, "Grep" },
-		b = { builtin.buffers, "Buffers" },
-		h = { builtin.help_tags, "Help tags" },
-		r = { builtin.oldfiles, "Recent files" },
-		s = { builtin.lsp_document_symbols, "Document symbols" },
-		S = { builtin.lsp_workspace_symbols, "Workspace symbols" },
-		c = { builtin.colorscheme, "Colorscheme" },
-		p = { builtin.git_files, "Git files" },
-		P = { builtin.git_status, "Git status" },
-		t = { builtin.current_buffer_tags, "Current buffer tags" },
-		T = { builtin.builtin, "Builtin" },
-	},
-}, { prefix = "<leader>" })
+wk.add({
+	{ "<leader>f", group = "Find" },
+	{ "<leader>fP", builtin.git_status, desc = "Git status" },
+	{ "<leader>fS", builtin.lsp_workspace_symbols, desc = "Workspace symbols" },
+	{ "<leader>fT", builtin.builtin, desc = "Builtin" },
+	{ "<leader>fb", builtin.buffers, desc = "Buffers" },
+	{ "<leader>fc", builtin.colorscheme, desc = "Colorscheme" },
+	{ "<leader>ff", builtin.find_files, desc = "Find files" },
+	{ "<leader>fg", builtin.live_grep, desc = "Grep" },
+	{ "<leader>fh", builtin.help_tags, desc = "Help tags" },
+	{ "<leader>fp", builtin.git_files, desc = "Git files" },
+	{ "<leader>fr", builtin.oldfiles, desc = "Recent files" },
+	{ "<leader>fs", builtin.lsp_document_symbols, desc = "Document symbols" },
+	{ "<leader>ft", builtin.current_buffer_tags, desc = "Current buffer tags" },
+}
+)

@@ -175,4 +175,6 @@ return require("packer").startup(function(use)
 	})
 
 	use("adelarsq/image_preview.nvim")
+
+	use("echasnovski/mini.nvim")
 end)

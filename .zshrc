@@ -31,6 +31,7 @@ eval "$(/usr/local/bin/brew shellenv)"
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
+export EDITOR=nvim
 
 # Silence pyenv error
 ZSH_PYENV_QUIET=true
@@ -106,13 +107,17 @@ alias cd='z'
 alias vim='nvim'
 alias v='nvim'
 alias ..='z ..'
-alias ...='z ...'
+alias ...='z ../..'
+
+function cdi() {
+    __zoxide_zi "$@"
+}
 
 # ==========================================================================================================================================
 # functions
 # ==========================================================================================================================================
 
-batdiff() {
+function batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --pager='less -R' --diff
 }
 
@@ -141,7 +146,6 @@ zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::extract
 zinit snippet OMZP::brew
-zinit snippet OMZP::pyenv
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::dotenv
 
@@ -149,7 +153,6 @@ zinit snippet OMZP::dotenv
 # inits
 # ==========================================================================================================================================
 
-eval "$(pyenv virtualenv-init -)"
 
 # pnpm
 export PNPM_HOME="/Users/patrykgrabowski/Library/pnpm"
@@ -179,12 +182,15 @@ autoload -U compinit && compinit
 # Replay all cached completions
 zinit cdreplay -q
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Install zoxide
 eval "$(zoxide init zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(starship init zsh)"
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source /Users/patrykgrabowski/.docker/init-zsh.sh || true # Added by Docker Desktop

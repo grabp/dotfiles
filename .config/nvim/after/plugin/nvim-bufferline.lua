@@ -84,17 +84,15 @@ bufferline.setup({
 
 local wk = require("which-key")
 
-wk.register({
-	["<leader>b"] = {
-		name = "Bufferline",
-		["1"] = { "<cmd>BufferLineGoToBuffer 1<cr>", "Go to buffer 1" },
-		["2"] = { "<cmd>BufferLineGoToBuffer 2<cr>", "Go to buffer 2" },
-		["3"] = { "<cmd>BufferLineGoToBuffer 3<cr>", "Go to buffer 3" },
-		["4"] = { "<cmd>BufferLineGoToBuffer 4<cr>", "Go to buffer 4" },
-		["5"] = { "<cmd>BufferLineGoToBuffer 5<cr>", "Go to buffer 5" },
-		["6"] = { "<cmd>BufferLineGoToBuffer 6<cr>", "Go to buffer 6" },
-		["7"] = { "<cmd>BufferLineGoToBuffer 7<cr>", "Go to buffer 7" },
-		["8"] = { "<cmd>BufferLineGoToBuffer 8<cr>", "Go to buffer 8" },
-		["9"] = { "<cmd>BufferLineGoToBuffer 9<cr>", "Go to buffer 9" },
-	},
+wk.add({
+	{ "<leader>b", group = "Bufferline" },
+	{ "<leader>b1", "<cmd>BufferLineGoToBuffer 1<cr>", desc = "Go to buffer 1" },
+	{ "<leader>b2", "<cmd>BufferLineGoToBuffer 2<cr>", desc = "Go to buffer 2" },
+	{ "<leader>b3", "<cmd>BufferLineGoToBuffer 3<cr>", desc = "Go to buffer 3" },
+	{ "<leader>b4", "<cmd>BufferLineGoToBuffer 4<cr>", desc = "Go to buffer 4" },
+	{ "<leader>b5", "<cmd>BufferLineGoToBuffer 5<cr>", desc = "Go to buffer 5" },
+	{ "<leader>b6", "<cmd>BufferLineGoToBuffer 6<cr>", desc = "Go to buffer 6" },
+	{ "<leader>b7", "<cmd>BufferLineGoToBuffer 7<cr>", desc = "Go to buffer 7" },
+	{ "<leader>b8", "<cmd>BufferLineGoToBuffer 8<cr>", desc = "Go to buffer 8" },
+	{ "<leader>b9", "<cmd>BufferLineGoToBuffer 9<cr>", desc = "Go to buffer 9" },
 })

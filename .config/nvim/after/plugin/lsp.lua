@@ -82,83 +82,86 @@ lsp_zero.setup()
 
 local wk = require("which-key")
 
-wk.register({
-	["g"] = {
-		name = "Go to",
-		d = {
-			function()
-				vim.lsp.buf.definition()
-			end,
-			"Go to definition",
-		},
-		D = {
-			function()
-				vim.lsp.buf.declaration()
-			end,
-			"Go to declaration",
-		},
-		i = {
-			function()
-				vim.lsp.buf.implementation()
-			end,
-			"Go to implementation",
-		},
-		r = {
-			function()
-				vim.lsp.buf.references()
-			end,
-			"Go to references",
-		},
-		t = {
-			function()
-				vim.lsp.buf.type_definition()
-			end,
-			"Go to type definition",
-		},
+wk.add({
+	{ "a", group = "Actions" },
+	{
+		"aa",
+		function()
+			vim.lsp.buf.code_action()
+		end,
+		desc = "Code action",
 	},
-	["h"] = {
-		name = "Hover",
-		h = {
-			function()
-				vim.lsp.buf.hover()
-			end,
-			"Show hover",
-		},
-		s = {
-			function()
-				vim.lsp.buf.signature_help()
-			end,
-			"Show signature help",
-		},
+	{
+		"ar",
+		function()
+			vim.lsp.buf.rename()
+		end,
+		desc = "Rename",
 	},
-	["a"] = {
-		name = "Actions",
-		a = {
-			function()
-				vim.lsp.buf.code_action()
-			end,
-			"Code action",
-		},
-		r = {
-			function()
-				vim.lsp.buf.rename()
-			end,
-			"Rename",
-		},
-		s = {
-			function()
-				vim.lsp.buf.workspace_symbol()
-			end,
-			"Workspace symbol",
-		},
+	{
+		"as",
+		function()
+			vim.lsp.buf.workspace_symbol()
+		end,
+		desc = "Workspace symbol",
 	},
-	["l"] = {
-		name = "LSP Server",
-		r = {
-			function()
-				vim.lsp.stop_client(vim.lsp.get_active_clients())
-			end,
-			"Restart LSP server",
-		},
+	{ "g", group = "Go to" },
+	{
+		"gD",
+		function()
+			vim.lsp.buf.declaration()
+		end,
+		desc = "Go to declaration",
+	},
+	{
+		"gd",
+		function()
+			vim.lsp.buf.definition()
+		end,
+		desc = "Go to definition",
+	},
+	{
+		"gi",
+		function()
+			vim.lsp.buf.implementation()
+		end,
+		desc = "Go to implementation",
+	},
+	{
+		"gr",
+		function()
+			vim.lsp.buf.references()
+		end,
+		desc = "Go to references",
+	},
+	{
+		"gt",
+		function()
+			vim.lsp.buf.type_definition()
+		end,
+		desc = "Go to type definition",
+	},
+	{ "h", group = "Hover" },
+	{
+		"hh",
+		function()
+			vim.lsp.buf.hover()
+		end,
+		desc = "Show hover",
+	},
+	{
+		"hs",
+		function()
+			vim.lsp.buf.signature_help()
+		end,
+		desc = "Show signature help",
+	},
+	{ "l", group = "LSP Server" },
+	{
+		"lr",
+		function()
+			vim.lsp.stop_client(vim.lsp.get_active_clients())
+		end,
+		desc = "Restart LSP server",
 	},
 })

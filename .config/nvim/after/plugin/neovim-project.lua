@@ -9,11 +9,10 @@ neovim_project.setup({
 		"~/dotfiles",
 	},
 })
-wk.register({
-	k = {
-		name = "Project",
-		d = { "<cmd>:Telescope neovim-project discover<CR>", "Discover" },
-		r = { "<cmd>:Telescope neovim-project recent<CR>", "Recent" },
-		h = { "<cmd>:Telescope neovim-project history<CR>", "History" },
-	},
-}, { prefix = "<leader>" })
+
+wk.add({
+	{ "<leader>k", group = "Project" },
+	{ "<leader>kd", "<cmd>:Telescope neovim-project discover<CR>", desc = "Discover" },
+	{ "<leader>kh", "<cmd>:Telescope neovim-project history<CR>", desc = "History" },
+	{ "<leader>kr", "<cmd>:Telescope neovim-project recent<CR>", desc = "Recent" },
+})

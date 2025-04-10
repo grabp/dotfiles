@@ -10,14 +10,13 @@ swenv.setup({
 	post_set_venv = vim.cmd.LspRestart,
 })
 
-wk.register({
-	["<leader>py"] = {
-		name = "Python",
-		e = {
-			function()
-				require("swenv.api").pick_venv()
-			end,
-			"Environment",
-		},
+wk.add({
+	{ "<leader>py", group = "Python" },
+	{
+		"<leader>pye",
+		function()
+			require("swenv.api").pick_venv()
+		end,
+		desc = "Environment",
 	},
 })

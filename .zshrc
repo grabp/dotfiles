@@ -28,6 +28,7 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
 export PATH="$HOME/.local/bin:$PATH"
 source "$HOME/.cargo/env"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # ==========================================================================================================================================
 # build flags 
@@ -131,14 +132,10 @@ batdiff() {
 # ==========================================================================================================================================
 
 zinit ice wait lucid
-zinit for \
-  light-mode \
-  zsh-users/zsh-completions \
-  zdharma-continuum/fast-syntax-highlighting \
-  light-mode \
-  zsh-users/zsh-autosuggestions \
-  light-mode \
-  Aloxaf/fzf-tab
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
 
 # ==========================================================================================================================================
 # snippets
@@ -148,7 +145,6 @@ zinit snippet OMZP::git
 zinit snippet OMZP::nvm
 zinit snippet OMZP::extract
 zinit snippet OMZP::command-not-found
-# zinit snippet OMZP::dotenv
 
 # ==========================================================================================================================================
 # Utils
@@ -164,7 +160,7 @@ timezsh() {
 # ==========================================================================================================================================
 
 # Load completions
-autoload -U compinit && compinit
+autoload -U compinit promptinit && compinit && promptinit
 
 # Replay all cached completions
 zinit cdreplay -q

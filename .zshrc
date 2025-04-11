@@ -153,7 +153,7 @@ batdiff() {
 
 zinit ice wait lucid
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
@@ -161,10 +161,16 @@ zinit light Aloxaf/fzf-tab
 # snippets
 # ==========================================================================================================================================
 
-zinit snippet OMZP::gitfast
+zinit snippet OMZP::git
 zinit snippet OMZP::nvm
 zinit snippet OMZP::extract
 zinit snippet OMZP::command-not-found
+
+# ==========================================================================================================================================
+# more colors
+# ==========================================================================================================================================
+
+fast-theme XDG:catppuccin-mocha
 
 # ==========================================================================================================================================
 # Utils

@@ -2,7 +2,7 @@
 
 add_newline = true
 
-command_timeout = 1500
+command_timeout = 3000
 
 palette = "catppuccin_mocha"
 
@@ -10,14 +10,15 @@ palette = "catppuccin_mocha"
 # pyenv_version_name = true
 
 [character]
-# success_symbol = '[➜](bold green)'
-success_symbol = "[[♥](green) ❯](maroon)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = "[[󰄛](teal) ❯](peach)"
+error_symbol = "[[󰄛](red) ❯](peach)"
+vimcmd_symbol = "[󰄛 ❮](subtext1)"
+
+[git_branch]
+style = "bold mauve"
 
 [directory]
 truncation_length = 4
-# Catppuccin 'lavender'
 style = "bold lavender"
 
 [palettes.catppuccin_mocha]

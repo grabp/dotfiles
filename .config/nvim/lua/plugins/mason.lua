@@ -9,6 +9,7 @@ return {
         "ruff",
         "pyright",
         "isort",
+        "pyproject-fmt",
         -- TypeScript
         "biome",
         "typescript-language-server",
@@ -27,6 +28,10 @@ return {
         "yamlfix",
         -- JSON
         "json-lsp",
+        -- Grammar
+        "harper-ls",
+        -- TOML
+        "taplo",
       },
     },
   },

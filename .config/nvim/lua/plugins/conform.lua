@@ -5,10 +5,6 @@ return {
       default_format_opts = {
         timeout_ms = 3000,
       },
-      format_on_save = {
-        lsp_fallback = true,
-        timeout_ms = 200,
-      },
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "ruff", "isort" },

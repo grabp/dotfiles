@@ -161,7 +161,7 @@ zinit light Aloxaf/fzf-tab
 # snippets
 # ==========================================================================================================================================
 
-zinit snippet OMZP::git
+zinit snippet OMZP::gitfast
 zinit snippet OMZP::nvm
 zinit snippet OMZP::extract
 zinit snippet OMZP::command-not-found

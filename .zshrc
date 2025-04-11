@@ -205,3 +205,11 @@ eval "$(starship init zsh)"
 
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/patryk.grabowski@iqvia.com/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -13,6 +13,7 @@ return {
         -- TypeScript
         "biome",
         "typescript-language-server",
+        "vtsls",
         -- Bash
         "bash-language-server",
         -- CSS

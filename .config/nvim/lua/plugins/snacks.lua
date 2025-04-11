@@ -81,17 +81,20 @@ return {
     opts = {
       picker = {
         hidden = true, -- for hidden files
-        ignored = true, -- for .gitignore files
+        -- ignored = true, -- for .gitignore files
         enabled = true,
+        file_ignore_patterns = { "node_modules" },
         sources = {
           files = {
             hidden = true,
-            ignored = true,
+            -- ignored = true,
+            file_ignore_patterns = { "node_modules" },
           },
           explorer = {
             hidden = true,
             ignored = true,
             layout = { layout = { position = "right" } },
+            file_ignore_patterns = { "node_modules" },
           },
         },
       },

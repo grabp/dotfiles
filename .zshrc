@@ -47,7 +47,6 @@ HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 
-export FZF_DEFAULT_OPTS="--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
@@ -88,10 +87,31 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 # Load nvm lazy
 zstyle ':omz:plugins:nvm' lazy yes
 
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--color=border:#313244,label:#cdd6f4"
+
 # fzf https://github.com/Aloxaf/fzf-tab
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+# # disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+
+zstyle ':fzf-tab:*' fzf-flags --bind=tab:accept --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8,fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8,selected-bg:#45475a,border:#313244,label:#cdd6f4
+# zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
+# switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
+
 zstyle ':fzf-tab:*' popup-min-size 80 12
 
 # | ftb-tmux-popup

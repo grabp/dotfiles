@@ -82,7 +82,6 @@ tmux
 
 ```shell
 nvim
-# Press `:PackerInstall`
 ```
 
 Done!

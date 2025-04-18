@@ -203,7 +203,9 @@ eval "$(starship init zsh)"
 # export NVM_AUTO_USE=true
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# export XDG_CONFIG_HOME="$HOME/.config"
+
+# For lazygit
+export XDG_CONFIG_HOME="$HOME/.config"
 
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"

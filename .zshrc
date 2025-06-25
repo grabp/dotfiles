@@ -125,21 +125,6 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 # ==========================================================================================================================================
-# aliases
-# ==========================================================================================================================================
-
-alias ls='eza --icons'
-alias ll='eza -lah --icons'
-alias tree='eza -lah --tree --icons --level=3 --ignore-glob="node_modules|.git|.DS_Store|.nvm|.turbo"'
-alias cat='bat'
-alias less="bat --pager='less -R'"
-alias cd='z'
-alias vim='nvim'
-alias v='nvim'
-alias ..='z ..'
-alias ...='z ...'
-
-# ==========================================================================================================================================
 # functions
 # ==========================================================================================================================================
 
@@ -159,6 +144,8 @@ zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-completions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
+zinit ice lucid as"program" pick"bin/git-dsf"
+zinit load so-fancy/diff-so-fancy
 
 # ==========================================================================================================================================
 # snippets
@@ -168,6 +155,25 @@ zinit snippet OMZP::git
 zinit snippet OMZP::nvm
 zinit snippet OMZP::extract
 zinit snippet OMZP::command-not-found
+
+# ==========================================================================================================================================
+# aliases
+# ==========================================================================================================================================
+
+alias ls='eza --icons'
+alias ll='eza -lah --icons'
+alias tree='eza -lah --tree --icons --level=3 --ignore-glob="node_modules|.git|.DS_Store|.nvm|.turbo"'
+alias cat='bat'
+alias less="bat --pager='less -R'"
+alias cd='z'
+alias vim='nvim'
+alias v='nvim'
+alias ..='z ..'
+alias ...='z ...'
+
+# git
+alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n"'
+alias gd='git diff --output-indicator-new=" " --output-indicator-old=" "'
 
 # ==========================================================================================================================================
 # more colors
